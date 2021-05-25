@@ -1,0 +1,16 @@
+using api
+
+give movie names u watched :
+
+1st link
+https://movierecommender-telugu.herokuapp.com/recommend?movie=C/o Kancharapalem,Jersey,World Famous Lover,Dear Comrade&number=100
+
+
+default 
+number=10
+
+2nd link
+
+https://movierecommender-telugu.herokuapp.com/genres?genres=Thriller
+
+
