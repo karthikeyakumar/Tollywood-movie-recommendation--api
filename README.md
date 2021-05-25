@@ -41,9 +41,9 @@ Demo website : https://movierecommender-telugu.herokuapp.com/
 ## /genres
   * enter any only one genre 
   * where api response will contain all telugu movies from imdb based on given genre
-![alt text](https://png.pngtree.com/png-clipart/20200805/ourmid/pngtree-black-exclamation-mark-warning-sign-on-yellow-triangle-png-image_2316977.png "Logo Title Text 1")
+![alt text](https://github.com/karthikeyakumar/Tollywood-movie-recommendation--api/blob/main/%E2%80%94Pngtree%E2%80%94black%20exclamation%20mark%20warning%20sign_5489468.png "warning")
 
-
+## give exact names from the imdb website to work with api  
 
 
 
