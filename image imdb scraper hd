@@ -1,0 +1,162 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "avi vdo display.ipynb",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/karthikeyakumar/Tollywood-movie-recommendation--api/blob/main/image%20imdb%20scraper%20hd\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZFlhOOjvgcuW",
+        "outputId": "c2d3d507-c586-4526-87aa-a9433718337e",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "import requests, urllib.request\n",
+        "from bs4 import BeautifulSoup\n",
+        "\n",
+        "def image(a):\n",
+        "  url=a+\"/mediaviewer/rm2184304385/\"\n",
+        "  response = requests.get(url)\n",
+        "  soup = BeautifulSoup(response.content, 'html.parser')\n",
+        "  out=[]\n",
+        "  list_landscape = soup.find_all('div',{\"class\":\"MediaViewerImagestyles__LandscapeContainer-sc-1qk433p-3\"})\n",
+        "  list_potrait=soup.find_all('div',{\"class\":\"MediaViewerImagestyles__PortraitContainer-sc-1qk433p-2\"})\n",
+        "  for i in list_landscape:\n",
+        "    try:\n",
+        "      out.append(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__LandscapeImage-sc-1qk433p-0\"}).get(\"src\"))\n",
+        "    except:\n",
+        "      out.append(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__LandscapeImage-sc-1qk433p-1\"}).get(\"src\"))\n",
+        "\n",
+        "  for  i in list_potrait:\n",
+        "    try:\n",
+        "      out.append(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-0\"}).get(\"src\"))\n",
+        "    except:\n",
+        "      out.append(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-1\"}).get(\"src\"))\n",
+        "  return out\n",
+        "\n",
+        "print(image(\"https://www.imdb.com/title/tt10214826\"))"
+      ],
+      "execution_count": 66,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['https://m.media-amazon.com/images/M/MV5BNjMzYWJkNmMtZDhmZC00ZmViLTljNGUtZjZkYWRmZmQ3MjM5XkEyXkFqcGdeQXVyMTE1MTYxMzk2._V1_.jpg', 'https://m.media-amazon.com/images/M/MV5BMWJkN2M3YmUtM2RhYi00MWJmLWI1ODEtMzBjNmU5ZDczYmUyXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg']\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gGzrodFQgdPw"
+      },
+      "source": [
+        "for i in list_landscape:\n",
+        "  try:\n",
+        "    print(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__LandscapeImage-sc-1qk433p-0\"}).get(\"src\"))\n",
+        "  except:\n",
+        "    print(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__LandscapeImage-sc-1qk433p-1\"}).get(\"src\"))\n"
+      ],
+      "execution_count": 55,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tY7VQscQm9TQ",
+        "outputId": "2f05c737-24da-49fd-b9b1-f4ed5c9de886",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "print(list_landscape)"
+      ],
+      "execution_count": 56,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ss3Gv-VTl9he",
+        "outputId": "b049b0d4-331a-4e65-b3f5-37afb0c3fb88",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "print(list_potrait)"
+      ],
+      "execution_count": 57,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[<div class=\"MediaViewerImagestyles__PortraitContainer-sc-1qk433p-2 iUyzNI\" style=\"max-height:999px;max-width:666px;left:calc(50% + 0px)\"><img alt=\"Mahanati (2018)\" class=\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-0 bnaOri\" data-image-id=\"rm3442450945-curr\" src=\"https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg\" srcset=\"https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_FMjpg_UY213_.jpg 142w, https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_FMjpg_UY320_.jpg 213w, https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_FMjpg_UY400_.jpg 266w, https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_FMjpg_UX666_.jpg 666w\"/></div>, <div class=\"MediaViewerImagestyles__PortraitContainer-sc-1qk433p-2 iUyzNI\" style=\"max-height:752px;max-width:564px;left:calc(160% + 0px)\"><img alt=\"Savitri and Keerthy Suresh in Mahanati (2018)\" class=\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-0 bnaOri peek\" data-image-id=\"rm2971101184-prev\" src=\"https://m.media-amazon.com/images/M/MV5BYmVlZjI5YjEtYjIzYi00NjA0LWExZTEtNDhjN2IyOGQ3ZDFkXkEyXkFqcGdeQXVyOTA3MTM0MTM@._V1_.jpg\" srcset=\"https://m.media-amazon.com/images/M/MV5BYmVlZjI5YjEtYjIzYi00NjA0LWExZTEtNDhjN2IyOGQ3ZDFkXkEyXkFqcGdeQXVyOTA3MTM0MTM@._V1_FMjpg_UY240_.jpg 180w, https://m.media-amazon.com/images/M/MV5BYmVlZjI5YjEtYjIzYi00NjA0LWExZTEtNDhjN2IyOGQ3ZDFkXkEyXkFqcGdeQXVyOTA3MTM0MTM@._V1_FMjpg_UY360_.jpg 270w, https://m.media-amazon.com/images/M/MV5BYmVlZjI5YjEtYjIzYi00NjA0LWExZTEtNDhjN2IyOGQ3ZDFkXkEyXkFqcGdeQXVyOTA3MTM0MTM@._V1_FMjpg_UX564_.jpg 564w\"/></div>]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kYp6lddRl4x7",
+        "outputId": "0ca0bb25-7a88-45cc-c050-50ff80513082",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "for i in list_potrait:\n",
+        "  try:\n",
+        "    print(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-0\"}).get(\"src\"))\n",
+        "  except:\n",
+        "    print(i.find(\"img\",{\"class\":\"MediaViewerImagestyles__PortraitImage-sc-1qk433p-1\"}).get(\"src\"))\n"
+      ],
+      "execution_count": 58,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "https://m.media-amazon.com/images/M/MV5BMjhjY2U0MDYtOTgxYi00MzExLTliNGItMDc3N2E2NjFjODZlXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg\n",
+            "https://m.media-amazon.com/images/M/MV5BYmVlZjI5YjEtYjIzYi00NjA0LWExZTEtNDhjN2IyOGQ3ZDFkXkEyXkFqcGdeQXVyOTA3MTM0MTM@._V1_.jpg\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    }
+  ]
+}
