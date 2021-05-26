@@ -7,18 +7,18 @@
 
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
-
+	 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/bootstrap-reboot.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/bootstrap-grid.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/owl.carousel.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/jquery.mCustomScrollbar.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/nouislider.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/ionicons.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/plyr.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/photoswipe.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/default-skin.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/css/main.css') }}">
+	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="css/nouislider.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/plyr.css">
+	<link rel="stylesheet" href="css/photoswipe.css">
+	<link rel="stylesheet" href="css/default-skin.css">
+	<link rel="stylesheet" href="css/main.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
@@ -34,9 +34,6 @@
 
 </head>
 <body class="body">
-
-	
-	{% block content %}
 	
 	<!-- header -->
 	<header class="header">
@@ -127,12 +124,12 @@
 		</div>
 
 		<!-- header search -->
-		<form action="#" method="POST" class="header__search">
+		<form action="#" class="header__search">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
 						<div class="header__search-content">
-							<input name="query" type="text" placeholder="Search for a movie, TV Series that you are looking for">
+							<input type="text" placeholder="Search for a movie, TV Series that you are looking for">
 
 							<button type="button">search</button>
 						</div>
@@ -145,16 +142,7 @@
 	<!-- end header -->
 
 	<!-- home -->
-	<section class="home">
-		<!-- home bg -->
-		<div class="owl-carousel home__bg">
-			<div class="item home__cover" data-bg="img/home/home__bg.jpg"></div>
-			<div class="item home__cover" data-bg="img/home/home__bg2.jpg"></div>
-			<div class="item home__cover" data-bg="img/home/home__bg3.jpg"></div>
-			<div class="item home__cover" data-bg="img/home/home__bg4.jpg"></div>
-		</div>
-		<!-- end home bg -->
-
+	<section class="home home--bg">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -1616,20 +1604,18 @@
 	<!-- end footer -->
 
 	<!-- JS -->
-	<script src="{{url_for('static', filename='styles/js/jquery-3.3.1.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/bootstrap.bundle.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/owl.carousel.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/jquery.mousewheel.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/jquery.mCustomScrollbar.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/wNumb.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/nouislider.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/plyr.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/jquery.morelines.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/photoswipe.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/photoswipe-ui-default.min.js') }}"></script>
-	<script src="{{url_for('static', filename='styles/js/main.js') }}"></script>
-
-	{% endblock %}
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/wNumb.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/plyr.min.js"></script>
+	<script src="js/jquery.morelines.min.js"></script>
+	<script src="js/photoswipe.min.js"></script>
+	<script src="js/photoswipe-ui-default.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 
 </html>
